@@ -25,6 +25,7 @@ pasv_max_port=13100
 port_enable=YES
 pasv_address=[public dns from the amazon EC2 instance]
 pasv_addr_resolve=YES
+local_root=/var/www/  ## Set path to access specific directory
 ```
 After doing the above, we need to boost up or daemon again.
 
@@ -57,6 +58,16 @@ sudo chown -R ftpuser:ftpuser /var/www/html/
 ## To delete users
 ```
 userdel USERNAME
+```
+
+## Manage permission and role
+```
+Add user into group
+# ubuntu = group name
+# username = ftpuser
+
+sudo usermod -a -G ubuntu ftpuser
+sudo chown -R ftpuser:ubuntu /var/www/html
 ```
 
 Errors like below then need to like suggested way
